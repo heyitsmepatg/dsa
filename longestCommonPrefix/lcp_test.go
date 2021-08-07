@@ -2,6 +2,13 @@ package longestcommonprefix
 
 import "testing"
 
+// Approach:
+// Find shortest string in the array, then iterate through shortestString's individual characters (aka rune in Golang). For each rune in shortestString, then iterate through the initial array and compare the same index of the rune in the shortestString.
+// If all runes match, replace existing longestCommonPrefix with the newest longest prefix.
+// If at any point the runes do not match, then break from the first loop and return longestCommonPrefix and voila!
+// Time complexity: O(n), as we must go through each element in the array once (n = length of input array). At first glance, because there is a nested for loop, it may appear as O(n^2), but because len(array) >> len(individual string) it is only O(n). A more precise analysis might show O(2*n) due to the search for the shortest string.
+// Space complexity: O(1). We only require helper temp variables.
+// Performance: Great :-)
 func TestLongestCommonPrefix_Example1(t *testing.T) {
 	strs := []string{"flower", "flow", "flight"}
 
